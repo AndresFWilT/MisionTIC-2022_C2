@@ -1,0 +1,12 @@
+SELECT '        Consulta 1';
+SELECT prod_titulo FROM `reto4`.`producto` ORDER BY prod_titulo ASC;
+SELECT 'Consulta 2';
+SELECT producto.prod_titulo, libro.lib_resenia, libro.lib_anio FROM `reto4`.`producto` INNER JOIN `reto4`.`libro` ON producto.prod_id = libro.lib_id WHERE (libro.lib_anio>1999) ORDER BY producto.prod_titulo ASC;
+SELECT 'Consulta 3';
+SELECT producto.prod_titulo FROM `reto4`.`producto` JOIN `reto4`.`autor`  INNER JOIN `reto4`.`libro` ON autor.aut_id = libro.lib_autor AND libro.lib_id = producto.prod_id WHERE (autor.aut_id = 105);
+SELECT 'Consulta 4';
+SELECT producto.prod_titulo FROM `reto4`.`producto` INNER JOIN `reto4`.`cliente` JOIN `reto4`.`venta` ON venta.ven_user = cliente.cli_username WHERE (cli_username = "deadofwrite") AND venta.ven_prod = producto.prod_id ORDER BY producto.prod_titulo ASC;
+SELECT 'Consulta 5';
+SELECT cliente.cli_username,cliente.cli_nombre,cliente.cli_apellido FROM `reto4`.`cliente` INNER JOIN `reto4`.`venta` JOIN `reto4`.`producto` ON venta.ven_prod = producto.prod_id WHERE (venta.ven_prod = 2) AND venta.ven_user = cliente.cli_username ORDER BY cliente.cli_username DESC;
+SELECT 'Consulta 6';
+SELECT COUNT(libro.lib_anio) FROM `reto4`.`libro` WHERE (libro.lib_anio>2017);
